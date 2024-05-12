@@ -1,21 +1,16 @@
 import { parse } from 'date-fns';
 
-const dates = [
-  '2025-01-01',
-  '2025-02-01',
-  undefined
-];
+const DATE_FORMAT = 'yyyy-MM-dd';
+const currentDate = new Date();
+const date1 = '2025-01-01';
+const date2 = undefined;
 
-const isFutureDay = (date) => {
-  const currentDate = new Date();
-  const inputDate = parse(date, 'yyyy-MM-dd', currentDate);
-  console.log(inputDate);
+const date1Obj = parse(date1, DATE_FORMAT, currentDate);
+console.log(date1Obj);
 
-  return currentDate < inputDate;
-};
+const date2Obj = parse(date2, DATE_FORMAT, currentDate);
+console.log(date2Obj);
 
-const validDates = dates.every((date) =>
-  isFutureDay(date)
-);
-
-console.log(validDates);
+// If the input date string is undefined:
+// - in `date-fns` v2.30.0, the `parse` function returns `Invalid Date`.
+// - in `date-fns` v3.6.0, the `parse` function throws an error.

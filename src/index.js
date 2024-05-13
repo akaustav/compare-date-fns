@@ -1,4 +1,6 @@
-import { parse } from 'date-fns';
+// Uncomment one of the following lines to test the code
+// import { parse } from 'date-fns2';
+import { parse } from 'date-fns3';
 
 const dates = [
   '2025-01-01',

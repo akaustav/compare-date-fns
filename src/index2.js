@@ -1,9 +1,10 @@
-import { parseISO as v2 } from "https://unpkg.com/browse/date-fns@2.30.0/parseISO/index.js";
-import { parseISO as v3 } from "https://unpkg.com/date-fns@3.6.0/parseISO.mjs";
+import { parseISO as parseISO2 } from 'date-fns2';
+import { parseISO as parseISO3 } from 'date-fns3';
 
-const date = "Mon May 20 2024 13:23:58 GMT-0700";
-const x = v2(date);
-console.log(x);
+const date = new Date();
 
-const y = v3(date);
-console.log(y);
+const date2 = parseISO2(date);
+console.log('Output from date-fns v2', date2);
+
+const date3 = parseISO3(date); // TypeError: dateString.split is not a function
+console.log('Output from date-fns v3', date3);

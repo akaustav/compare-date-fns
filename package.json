@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "date-fns2": "npm:date-fns@^2.30.0",
-    "date-fns3": "npm:date-fns@^3.6.0"
+    "date-fns2": "npm:date-fns@2.30.0",
+    "date-fns3": "npm:date-fns@3.6.0"
   }
 }

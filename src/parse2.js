@@ -9,7 +9,7 @@ const dates = [
   undefined
 ];
 
-const isFutureDay = (date, version) => {
+const isFutureDay = (date, version, useWorkAround) => {
   const currentDate = new Date();
   let inputDate;
 
@@ -19,8 +19,12 @@ const isFutureDay = (date, version) => {
     try {
       inputDate = parse3(date, 'yyyy-MM-dd', currentDate); // For date == undefined, TypeError: Cannot read properties of undefined (reading 'match')
     } catch (e) {
-      console.error(`${e.name}: ${e.message}`);
-      return;
+      if (useWorkAround === true) {
+        inputDate = parse3(`${date}`, 'yyyy-MM-dd', currentDate); // For date == undefined, undefined is past
+      } else {
+        console.error(`${e.name}: ${e.message}`);
+        return;
+      }
     }
   }
 
@@ -38,3 +42,6 @@ dates.forEach(date => isFutureDay(date, 2));
 
 console.log('\nOutput of parse from date-fns v3:');
 dates.forEach(date => isFutureDay(date, 3));
+
+console.log('\nOutput of parse from date-fns v3 with workaround:');
+dates.forEach(date => isFutureDay(date, 3, true));

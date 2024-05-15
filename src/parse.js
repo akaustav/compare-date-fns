@@ -18,3 +18,11 @@ try {
 } catch (e) {
   console.error(`${e.name}: ${e.message}`);
 }
+
+console.log('\nOutput of parse from date-fns v3 with workaround:');
+try {
+  const dateObj3 = parse3(`${date}`, DATE_FORMAT, currentDate); // Invalid Date
+  console.log(dateObj3);
+} catch (e) {
+  console.error(`${e.name}: ${e.message}`);
+}

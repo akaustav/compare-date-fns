@@ -16,3 +16,11 @@ try {
 } catch (e) {
   console.error(`${e.name}: ${e.message}`);
 }
+
+console.log('\nOutput of parseISO from date-fns v3 with workaround:');
+try {
+  const date3 = parseISO3(`${date}`); // TypeError: dateString.split is not a function
+  console.log(date3);
+} catch (e) {
+  console.error(`${e.name}: ${e.message}`);
+}

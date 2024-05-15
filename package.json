@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "simple": "node src/simple.js",
-    "start2": "node src/index2.js"
+    "parse": "node src/parse.js",
+    "parse2": "node src/parse2.js",
+    "parseISO": "node src/parseISO.js"
   },
   "type": "module",
   "keywords": [],

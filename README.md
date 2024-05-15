@@ -10,9 +10,9 @@ To run this project on your local run the following:
 
 ```shell
 npm i
-npm start
-npm run start2
-npm run simple
+npm run parse
+npm run parse2
+npm run parseISO
 ```
 
 ## Special Notes

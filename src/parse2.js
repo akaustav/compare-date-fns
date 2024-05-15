@@ -3,8 +3,8 @@
 import { parse } from 'date-fns3';
 
 const dates = [
-  '2025-01-01',
-  '2025-02-01',
+  '2000-01-01',
+  '9999-02-01',
   undefined
 ];
 
@@ -16,8 +16,8 @@ const isFutureDay = (date) => {
   return currentDate < inputDate;
 };
 
-const validDates = dates.every((date) =>
+const validDates = dates.map((date) =>
   isFutureDay(date)
 );
 
-console.log(validDates);
+console.log(validDates); // [false, true, false]

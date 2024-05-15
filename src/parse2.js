@@ -1,6 +1,7 @@
-// Uncomment one of the following lines to test the code
-// import { parse } from 'date-fns2';
-import { parse } from 'date-fns3';
+import { parse as parse2 } from 'date-fns2';
+import { parse as parse3 } from 'date-fns3';
+
+console.log('===== parse2.js =====');
 
 const dates = [
   '2000-01-01',
@@ -8,16 +9,32 @@ const dates = [
   undefined
 ];
 
-const isFutureDay = (date) => {
+const isFutureDay = (date, version) => {
   const currentDate = new Date();
-  const inputDate = parse(date, 'yyyy-MM-dd', currentDate);
-  console.log(inputDate);
+  let inputDate;
 
-  return currentDate < inputDate;
+  if (version === 2) {
+    inputDate = parse2(date, 'yyyy-MM-dd', currentDate); // For date == undefined, undefined is past
+  } else {
+    try {
+      inputDate = parse3(date, 'yyyy-MM-dd', currentDate); // For date == undefined, TypeError: Cannot read properties of undefined (reading 'match')
+    } catch (e) {
+      console.error(`${e.name}: ${e.message}`);
+      return;
+    }
+  }
+
+  const isFuture = inputDate > currentDate;
+  console.log(date, isFuture ? 'is future' : 'is past');
+  // For date == undefined,
+  // - Output from date-fns v2: undefined is past
+  // - Output from date-fns v3: TypeError: Cannot read properties of undefined (reading 'match')
+
+  return isFuture;
 };
 
-const validDates = dates.map((date) =>
-  isFutureDay(date)
-);
+console.log('Output of parse from date-fns v2:');
+dates.forEach(date => isFutureDay(date, 2));
 
-console.log(validDates); // [false, true, false]
+console.log('\nOutput of parse from date-fns v3:');
+dates.forEach(date => isFutureDay(date, 3));

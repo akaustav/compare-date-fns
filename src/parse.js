@@ -1,12 +1,20 @@
 import { parse as parse2 } from 'date-fns2';
 import { parse as parse3 } from 'date-fns3';
 
+console.log('===== parse.js =====');
+
 const DATE_FORMAT = 'yyyy-MM-dd';
 const currentDate = new Date();
 const date = undefined;
 
+console.log('Output of parse from date-fns v2:');
 const dateObj2 = parse2(date, DATE_FORMAT, currentDate); // Invalid Date
-console.log('Output from date-fns v2', dateObj2);
+console.log(dateObj2);
 
-const dateObj3 = parse3(date, DATE_FORMAT, currentDate); // TypeError: Cannot read properties of undefined (reading 'match')
-console.log('Output from date-fns v3', dateObj3);
+console.log('\nOutput of parse from date-fns v3:');
+try {
+  const dateObj3 = parse3(date, DATE_FORMAT, currentDate); // TypeError: Cannot read properties of undefined (reading 'match')
+  console.log(dateObj3);
+} catch (e) {
+  console.error(`${e.name}: ${e.message}`);
+}

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run parse && npm run parse2 && npm run parseISO",
     "parse": "node src/parse.js",
     "parse2": "node src/parse2.js",
     "parseISO": "node src/parseISO.js"

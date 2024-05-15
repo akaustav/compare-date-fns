@@ -29,8 +29,8 @@ npm run simple
     npm i -E <ALIAS_NAME>@npm:<REAL_PACKAGE>@<PACKAGE_VERSION>
     ```
 
-  - `i` is shorthand / alias for `install`
-  - `-E` is short for [`--save-exact`](https://docs.npmjs.com/cli/v10/commands/npm-install#save-exact)
+  - `i` is shorthand for [`install`](https://docs.npmjs.com/cli/v10/commands/npm-install)
+  - `-E` is shorthand for the [`--save-exact`](https://docs.npmjs.com/cli/v10/commands/npm-install#save-exact) flag. This flag is optional in the current repository because the [`.npmrc`](.npmrc) file already the `save-exact=true` configuration.
   - `<ALIAS_NAME>` the name of the package that will be used in the import statements within the code
   - `<REAL_PACKAGE>` is the name of the package available on [npmjs.com](https://www.npmjs.com/)
   - `<PACKAGE_VERSION>` is the specific version of the package being installed in semver format
@@ -38,7 +38,7 @@ npm run simple
 - Example commands used in this repository:
 
     ```shell
-    npm i -E  @npm:date-fns@2.30.0
+    npm i -E date-fns2@npm:date-fns@2.30.0
     npm i -E date-fns3@npm:date-fns@3.6.0
     ```
 
